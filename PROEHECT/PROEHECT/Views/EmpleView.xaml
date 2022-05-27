@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROEHECT.Views.EmpleView"
+             BackgroundImageSource="backgrudn.jpg">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Opacity="0.3" BackgroundColor="BlanchedAlmond" HorizontalTextAlignment="Center" TextColor="Black" Text="ID" FontSize="Title" Padding="30,10,30,10"/>
+                <Label Text="{Binding id}" TextColor="White"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" x:Name="lblid"/>
+
+                <Label Opacity="0.3" BackgroundColor="BlanchedAlmond" HorizontalTextAlignment="Center" TextColor="Black" Text="NOMBRE" FontSize="Title" Padding="30,10,30,10"/>
+                <Label Text="{Binding nombre}" TextColor="White"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" x:Name="lblname"/>
+
+                <Label Opacity="0.3" BackgroundColor="BlanchedAlmond" HorizontalTextAlignment="Center" TextColor="Black" Text="EDAD" FontSize="Title" Padding="30,10,30,10"/>
+                <Label Text="{Binding edad}" TextColor="White"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" x:Name="lbledad"/>
+
+                <Label Opacity="0.3" BackgroundColor="BlanchedAlmond" HorizontalTextAlignment="Center" TextColor="Black" Text="GENERO" FontSize="Title" Padding="30,10,30,10"/>
+                <Label Text="{Binding genero}" TextColor="White"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" x:Name="lblgen"/>
+
+                <Label Opacity="0.3" BackgroundColor="BlanchedAlmond" HorizontalTextAlignment="Center" TextColor="Black" Text="FECHA" FontSize="Title" Padding="30,10,30,10"/>
+                <Label Text="{Binding fecha}" TextColor="White"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" x:Name="lblfecha"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROEHECT.Views.Main"
+             BackgroundImageSource="OM0UU.png">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" x:Name="toolmenu1" Order="Primary" Priority="0" Clicked="toolmenu1_Clicked">
+            
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <ListView x:Name="ListaEmpleados" ItemTapped="ListaEmpleados_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Label Grid.Column="0" HorizontalTextAlignment="Center" Text="{Binding id}" TextColor="Wheat" FontSize="Medium"></Label>
+                                    <Label Grid.Column="1" Text="{Binding nombre}" TextColor="Wheat" FontSize="Medium"></Label>
+                                    <Label Grid.Column="2" Text="{Binding genero}" TextColor="Wheat" FontSize="Medium"></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+         </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

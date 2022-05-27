@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PROEHECT.Views.EmplePage"
+             BackgroundImageSource="backgrudn.jpg">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Frame Opacity="0.3" Padding="24" CornerRadius="0">
+                    <Label Opacity="1.0" Text="BIENVENIDO!" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+                </Frame>
+                <Label TextColor="White" Text="ID" FontSize="Title"  Padding="30,10,30,10"/>
+                <Entry Placeholder="INGRESE EL ID!" Keyboard="Text" x:Name="txtid" Margin="10,10,10,10"/>
+
+                <Label TextColor="White" Text="Nombre" FontSize="Title"  Padding="30,10,30,10"/>
+                <Entry Placeholder="INGRESE EL NOMBRE!" Keyboard="Text" x:Name="txtnombre" Margin="10,10,10,10"/>
+
+                <Label TextColor="White" Text="Edad" FontSize="Title"  Padding="30,10,30,10"/>
+                <Entry Placeholder="INGRESE LA EDAD!" Keyboard="Numeric" x:Name="txtedad" Margin="10,10,10,10"/>
+
+                <Label TextColor="White" Text="Genero" FontSize="Title"  Padding="30,10,30,10"/>
+                <Picker Title="Seleccione su Genero" TitleColor="Coral" x:Name="genero" Margin="10,10,10,10">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Masculino</x:String>
+                            <x:String>Femenino</x:String>
+                            <x:String>Prefiero no decir</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label TextColor="White" Text="Fecha" FontSize="Title"  Padding="30,10,30,10"/>
+                <DatePicker Format="D" VerticalOptions="CenterAndExpand" x:Name="fecha" Margin="10,10,10,10"/>
+
+                <Button Clicked="btngregar_Clicked" x:Name="btngregar" Text="AGREGAR" FontSize="Title" TextColor="Black" BackgroundColor="GreenYellow" Margin="50,20,50,20"/>
+                <Button Clicked="btneliminar_Clicked" x:Name="btneliminar" Text="ELIMINAR" FontSize="Title" TextColor="White" BackgroundColor="DimGray" Margin="50,20,50,20"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

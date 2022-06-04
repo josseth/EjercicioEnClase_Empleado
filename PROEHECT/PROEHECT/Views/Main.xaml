@@ -5,9 +5,8 @@
              BackgroundImageSource="OM0UU.png">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Agregar" x:Name="toolmenu1" Order="Primary" Priority="0" Clicked="toolmenu1_Clicked">
-            
-        </ToolbarItem>
+        <ToolbarItem Text="Agregar" x:Name="toolmenu1" Order="Primary" Priority="0" Clicked="toolmenu1_Clicked"/>
+        <ToolbarItem Text="Tomer Foto" x:Name="toolmenu2" Order="Primary" Priority="0" Clicked="toolmenu2_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

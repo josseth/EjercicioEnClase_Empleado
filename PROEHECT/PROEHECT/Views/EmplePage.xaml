@@ -20,7 +20,8 @@
                 <Entry Placeholder="INGRESE LA EDAD!" Keyboard="Numeric" x:Name="txtedad" Margin="10,10,10,10" Text="{Binding edad}"/>
 
                 <Label TextColor="White" Text="Genero" FontSize="Title"  Padding="30,10,30,10"/>
-                <Picker Title="Seleccione su Genero" TitleColor="Coral" x:Name="genero" Margin="10,10,10,10" SelectedItem="{Binding genero}">
+                <Picker Title="Seleccione su Genero" TitleColor="Coral" 
+                        x:Name="genero" Margin="10,10,10,10" SelectedItem="{Binding genero}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Masculino</x:String>
@@ -31,7 +32,8 @@
                 </Picker>
 
                 <Label TextColor="White" Text="Fecha" FontSize="Title"  Padding="30,10,30,10"/>
-                <DatePicker Format="D" VerticalOptions="CenterAndExpand" x:Name="fecha" Margin="10,10,10,10" Date="{Binding fechaingreso}"/>
+                <DatePicker Format="D" VerticalOptions="CenterAndExpand" 
+                            x:Name="fecha" Margin="10,10,10,10" Date="{Binding fechaingreso}"/>
 
                 <Button Clicked="btngregar_Clicked" x:Name="btngregar" Text="AGREGAR" FontSize="Title" TextColor="Black" BackgroundColor="GreenYellow" Margin="50,20,50,20"/>
                 <Button Clicked="btneliminar_Clicked" x:Name="btneliminar" Text="ELIMINAR" FontSize="Title" TextColor="White" BackgroundColor="DimGray" Margin="50,20,50,20"/>

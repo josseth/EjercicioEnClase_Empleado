@@ -43,5 +43,10 @@ namespace PROEHECT.Views
             base.OnAppearing();
             ListaEmpleados.ItemsSource = await App.DBase.ObtenerListaEmple();
         }
+
+        private async void toolmenu2_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PhotoPage());
+        }
     }
 }

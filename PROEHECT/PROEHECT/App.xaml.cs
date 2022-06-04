@@ -16,7 +16,7 @@ namespace PROEHECT
             get
             {
                 if (db == null) {
-                    db = new DataBase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Emple.db3"));
+                    db = new DataBase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Emple.db3"),"Empleado");
                 }
                 return db;
             }

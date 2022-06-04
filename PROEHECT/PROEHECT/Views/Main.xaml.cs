@@ -26,7 +26,17 @@ namespace PROEHECT.Views
         {
             var emple = (Empleado)e.Item;
             await DisplayAlert("INFO","Empleado Seleccionado "+emple.nombre,"OK");
-            await Navigation.PushAsync(new EmpleView(emple.id, emple.nombre, emple.edad, emple.genero, emple.fechaingreso));
+            bool answer = await DisplayAlert("Elige?", "Deseas Modificar el Empleado", "SI", "NO");
+            if (answer)
+            {
+                EmplePage page = new EmplePage();
+                page.BindingContext = emple;
+                await Navigation.PushAsync(page);
+            }
+            else
+            {
+                await Navigation.PushAsync(new EmpleView(emple.id, emple.nombre, emple.edad, emple.genero, emple.fechaingreso));
+            }
         }
         protected async override void OnAppearing()
         {

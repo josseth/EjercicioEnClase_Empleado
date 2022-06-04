@@ -35,6 +35,7 @@
 
                 <Button Clicked="btngregar_Clicked" x:Name="btngregar" Text="AGREGAR" FontSize="Title" TextColor="Black" BackgroundColor="GreenYellow" Margin="50,20,50,20"/>
                 <Button Clicked="btneliminar_Clicked" x:Name="btneliminar" Text="ELIMINAR" FontSize="Title" TextColor="White" BackgroundColor="DimGray" Margin="50,20,50,20"/>
+                <Button Clicked="btnactualiza_Clicked" x:Name="btnactualiza" Text="ACTUALIZAR" FontSize="Title" TextColor="White" BackgroundColor="DimGray" Margin="50,20,50,20"/>
 
             </StackLayout>
         </ScrollView>

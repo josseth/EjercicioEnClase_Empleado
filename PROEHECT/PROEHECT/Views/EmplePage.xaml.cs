@@ -39,9 +39,54 @@ namespace PROEHECT.Views
             }
         }
 
-        private void btneliminar_Clicked(object sender, EventArgs e)
+        private async void btneliminar_Clicked(object sender, EventArgs e)
         {
+            var emple = new Empleado
+            {
+                id = Convert.ToInt32(txtid.Text),
+                nombre = txtnombre.Text,
+                edad = txtedad.Text,
+                genero = genero.SelectedItem.ToString(),
+                fechaingreso = fecha.Date.ToString()
+            };
+            if (txtid.Text != null || txtid.Text.Length==0)
+            {
+                var result = await App.DBase.BorrarEmple(emple);
+                if (result != 0) { await DisplayAlert("Aviso", "Persona Eliminada con Exito!!!", "Ok"); }
+                else { await DisplayAlert("Aviso", "Ha Ocurrido un Error", "Ok"); }
+            }
+            else
+            {
+                await DisplayAlert("Aviso", "Ha Ocurrido un Error", "Ok");
+            }
 
+            await Navigation.PopAsync();
+        }
+
+        private async void btnactualiza_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtid.Text))
+            {
+                var emple = new Empleado
+                {
+                    id = Convert.ToInt32(txtid.Text),
+                    nombre = txtnombre.Text,
+                    edad = txtedad.Text,
+                    genero = genero.SelectedItem.ToString(),
+                    fechaingreso = fecha.Date.ToString()
+                };
+                var result = await App.DBase.EmpleSave(emple);
+                if (result != 0)
+                {
+                    await DisplayAlert("Aviso", "Persona Actualizada con Exito!!!", "Ok");
+                }
+                else
+                {
+                    await DisplayAlert("Aviso", "Ha Ocurrido un Error", "Ok");
+                }
+
+                await Navigation.PopAsync();
+            }
         }
     }
 }

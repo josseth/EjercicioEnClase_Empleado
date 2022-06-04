@@ -11,12 +11,12 @@ namespace PROEHECT.Controller
     {
         readonly SQLiteAsyncConnection dbase;
 
-        public DataBase(String dbpath) {
+        public DataBase(String dbpath,String table) {
             dbase = new SQLiteAsyncConnection(dbpath);
-            dbase.CreateTableAsync<Empleado>();
-
+            if (table.Equals("Empleado")) { dbase.CreateTableAsync<Empleado>(); }
+            else if (table.Equals("Contactos")) { dbase.CreateTableAsync<Contactos>(); }
         }
-        #region OPERACIONES
+        #region OPERACIONES_EMPLEADOS
         //CREAR
         public Task<int> EmpleSave(Empleado emple) {
             if (emple.id != 0)
@@ -44,6 +44,37 @@ namespace PROEHECT.Controller
         {
             return dbase.DeleteAsync(emple);
         }
-        #endregion OPERACIONES
+        #endregion OPERACIONES_EMPLEADOS
+        #region OPERACIONES_CONTACTOS
+        //CREAR
+        public Task<int> ContactSave(Contactos contac)
+        {
+            if (contac.id != 0)
+            {
+                return dbase.UpdateAsync(contac);
+            }
+            else
+            {
+                return dbase.InsertAsync(contac);
+            }
+        }
+        //LEER
+        public Task<List<Contactos>> ObtenerListaContactos()
+        {
+            return dbase.Table<Contactos>().ToListAsync();
+        }
+        //LEER 2
+        public Task<Contactos> ObtenerContacto(int eid)
+        {
+            return dbase.Table<Contactos>()
+                .Where(i => i.id == eid)
+                .FirstOrDefaultAsync();
+        }
+        //BORRAR
+        public Task<int> BorrarEmple(Contactos contac)
+        {
+            return dbase.DeleteAsync(contac);
+        }
+        #endregion OPERACIONES_CONTACTOS
     }
 }

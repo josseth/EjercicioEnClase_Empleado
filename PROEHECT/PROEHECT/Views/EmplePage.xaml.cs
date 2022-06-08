@@ -8,26 +8,61 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PROEHECT.Models;
 using PROEHECT.Controller;
+using Plugin.Media;
+using System.IO;
 
 namespace PROEHECT.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmplePage : ContentPage
     {
+        Plugin.Media.Abstractions.MediaFile filefoto = null;
         public EmplePage()
         {
             InitializeComponent();
         }
-
+        private Byte[] converttobytearray() 
+        {
+            if (filefoto != null)
+            {
+                using (MemoryStream mem = new MemoryStream())
+                {
+                    Stream stream = filefoto.GetStream();
+                    stream.CopyTo(mem);
+                    return mem.ToArray();
+                }
+            }
+            else 
+            {
+                return null;
+            }
+        }
         private async void btngregar_Clicked(object sender, EventArgs e)
         {
+            //VIENE ESTE CODIGO DE PHOYOPAGE
+            var filefoto = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Misfotos",
+                Name = "IMG001.jpg",
+                SaveToAlbum = true
+            });
+            await DisplayAlert("Path: ", filefoto.Path, "OK");
+            if (filefoto != null)
+            {
+                fotoo.Source = ImageSource.FromStream(() =>
+                {
+                    return filefoto.GetStream();
+                });
+            }   
+
             var emple = new Empleado
             {
                 id = 0,
                 nombre = txtnombre.Text,
                 edad = txtedad.Text,
                 genero = genero.SelectedItem.ToString(),
-                fechaingreso = fecha.Date.ToString()
+                fechaingreso = fecha.Date.ToString(),
+                foto = converttobytearray()
             };
             var result = await App.DBase.EmpleSave(emple);
             if (result > 0)

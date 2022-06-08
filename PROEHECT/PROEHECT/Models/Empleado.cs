@@ -13,6 +13,7 @@ namespace PROEHECT.Models
         public string edad { get; set; }
         public string genero { get; set; }
         public string fechaingreso { get; set; }
+        public byte[] foto { get; set; }
 
     }
 }

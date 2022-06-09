@@ -10,6 +10,7 @@ using PROEHECT.Models;
 using PROEHECT.Controller;
 using Plugin.Media;
 using System.IO;
+using Xamarin.Essentials;
 
 namespace PROEHECT.Views
 {
@@ -39,22 +40,11 @@ namespace PROEHECT.Views
         }
         private async void btngregar_Clicked(object sender, EventArgs e)
         {
-            //VIENE ESTE CODIGO DE PHOYOPAGE
-            var filefoto = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            if (filefoto == null)
             {
-                Directory = "Misfotos",
-                Name = "IMG001.jpg",
-                SaveToAlbum = true
-            });
-            await DisplayAlert("Path: ", filefoto.Path, "OK");
-            if (filefoto != null)
-            {
-                fotoo.Source = ImageSource.FromStream(() =>
-                {
-                    return filefoto.GetStream();
-                });
-            }   
-
+                await DisplayAlert("Error", "No se encontro la foto!", "OK");
+                return;
+            }
             var emple = new Empleado
             {
                 id = 0,
@@ -73,7 +63,11 @@ namespace PROEHECT.Views
                 await DisplayAlert("ALERTA", "Empleado NO INGRESADO", "NO");
             }
         }
-
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            var latlog = await Geolocation.GetLocationAsync();
+        }
         private async void btneliminar_Clicked(object sender, EventArgs e)
         {
             var emple = new Empleado
@@ -121,6 +115,25 @@ namespace PROEHECT.Views
                 }
 
                 await Navigation.PopAsync();
+            }
+        }
+
+        private async void takefoto_Clicked(object sender, EventArgs e)
+        {
+            //VIENE ESTE CODIGO DE PHOYOPAGE
+            filefoto = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Misfotos",
+                Name = "IMG001.jpg",
+                SaveToAlbum = true
+            });
+            await DisplayAlert("Path: ", filefoto.Path, "OK");
+            if (filefoto != null)
+            {
+                fotoo.Source = ImageSource.FromStream(() =>
+                {
+                    return filefoto.GetStream();
+                });
             }
         }
     }

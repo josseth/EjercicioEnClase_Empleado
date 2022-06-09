@@ -12,6 +12,12 @@
                 </Frame>
                 <Image x:Name="fotoo" BackgroundColor="PowderBlue"
                 WidthRequest="100" HeightRequest="170"/>
+                
+                <Button Clicked="takefoto_Clicked" x:Name="takefoto" 
+                        Text="TOMAR FOTO" FontSize="Title" 
+                        TextColor="Black" BackgroundColor="LightGreen" 
+                        Margin="50,20,50,20"/>
+
                 <Label TextColor="White" Text="ID" FontSize="Title"  Padding="30,10,30,10" />
                 <Entry Placeholder="INGRESE EL ID!" Keyboard="Text" x:Name="txtid" Margin="10,10,10,10" Text="{Binding id}"/>
 
